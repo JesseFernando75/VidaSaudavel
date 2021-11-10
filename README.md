@@ -1,6 +1,6 @@
-# vida_saudavel
+# Vida saudável
 
-A new Flutter project.
+App de receitas para uma alimentação saudável.
 
 ## Getting Started
 
