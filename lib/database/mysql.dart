@@ -10,30 +10,29 @@ class Mysql {
   Future<MySqlConnection> getConnection() async {
     var settings = new ConnectionSettings(
         host: host, port: port, user: user, password: password, db: db);
-    var connection = await MySqlConnection.connect(settings);
-    return connection;
+    return await MySqlConnection.connect(settings);
   }
 
-  void insert(String table, Map<String, String> data) {
-    if (data.isNotEmpty) {
-      getConnection().then((connection) {
-        print("Conectado ao banco de dados.");
-        String query = "";
-        String keys = "";
-        String values = "(";
+  Future<Results> insert(String table, Map<String, String> data) async {
+    MySqlConnection connection = await getConnection();
+    print("Conectado ao banco de dados.");
 
-        keys = data.keys.toString();
-        data.values.forEach((v) => values += "'$v', ");
-        values = values.substring(0, values.length - 2);
-        values += ")";
+    String query = "";
+    String keys = "";
+    String values = "(";
 
-        query = "INSERT INTO $table $keys VALUES $values";
-        print(query);
+    keys = data.keys.toString();
+    data.values.forEach((v) => values += "'$v', ");
+    values = values.substring(0, values.length - 2);
+    values += ")";
 
-        connection.query(query);
-        connection.close();
-        print("Conexão com o banco de dados fechada.");
-      });
-    }
+    query = "INSERT INTO $table $keys VALUES $values";
+    print(query);
+
+    var resultado = connection.query(query);
+    connection.close();
+    print("Conexão com o banco de dados fechada.");
+
+    return Future.value(resultado);
   }
 }
