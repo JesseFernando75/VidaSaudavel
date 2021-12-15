@@ -47,6 +47,7 @@ class Cadastrodecliente extends StatelessWidget {
                 decoration: InputDecoration(
                     labelText: "Digite seu nome",
                     labelStyle: TextStyle(
+                      height: 0.1,
                       color: Colors.white,
                       fontWeight: FontWeight.w400,
                       fontSize: 20,
@@ -73,6 +74,7 @@ class Cadastrodecliente extends StatelessWidget {
                 decoration: InputDecoration(
                     labelText: "Digite sua idade",
                     labelStyle: TextStyle(
+                      height: 0.1,
                       color: Colors.white,
                       fontWeight: FontWeight.w400,
                       fontSize: 20,
@@ -96,29 +98,7 @@ class Cadastrodecliente extends StatelessWidget {
                 decoration: InputDecoration(
                     labelText: "Digite seu login",
                     labelStyle: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    )),
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                )),
-            TextFormField(
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Informe a senha';
-                  } else if (value.length < 6) {
-                    return 'A senha deve ter no mínimo seis caracteres';
-                  }
-                  return null;
-                },
-                keyboardType: TextInputType.text,
-                controller: _senhaController,
-                obscureText: true,
-                decoration: InputDecoration(
-                    labelText: "Senha",
-                    labelStyle: TextStyle(
+                      height: 0.1,
                       color: Colors.white,
                       fontWeight: FontWeight.w400,
                       fontSize: 20,
@@ -128,7 +108,34 @@ class Cadastrodecliente extends StatelessWidget {
                   color: Colors.white,
                 )),
             SizedBox(
-              height: 25,
+              height: 20,
+            ),
+            TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Informe a senha';
+                  } else if (value.length < 6) {
+                    return 'A senha deve ter no mínimo 6 caracteres';
+                  }
+                  return null;
+                },
+                keyboardType: TextInputType.text,
+                controller: _senhaController,
+                obscureText: true,
+                decoration: InputDecoration(
+                    labelText: "Senha",
+                    labelStyle: TextStyle(
+                      height: 0.1,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
+                    )),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                )),
+            SizedBox(
+              height: 30,
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -142,26 +149,22 @@ class Cadastrodecliente extends StatelessWidget {
                     )),
                 onPressed: () async {
                   if (_formkey.currentState!.validate()) {
-                    if (await cliente.cadastrarCliente(
+                    cliente.cadastrarCliente(
                         _nomeController.text,
                         _idadeController.text,
                         _loginController.text,
-                        _senhaController.text)) {
-                      Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            backgroundColor: Colors.green,
-                            content: Text('Usuário cadastrado com sucesso.')),
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            backgroundColor: Colors.red,
-                            content: Text('Usuário cadastrado com sucesso.')),
-                      );
-                    }
+                        _senhaController.text);
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text('Usuário cadastrado com sucesso.')),
+                    );
                   }
                 }),
+            SizedBox(
+              height: 30,
+            ),
           ]),
         ),
       ),

@@ -13,7 +13,7 @@ class Mysql {
     return await MySqlConnection.connect(settings);
   }
 
-  Future<Results> insert(String table, Map<String, String> data) async {
+  void insert(String table, Map<String, String> data) async {
     MySqlConnection connection = await getConnection();
     print("Conectado ao banco de dados.");
 
@@ -29,10 +29,26 @@ class Mysql {
     query = "INSERT INTO $table $keys VALUES $values";
     print(query);
 
-    var resultado = connection.query(query);
+    connection.query(query);
     connection.close();
     print("Conexão com o banco de dados fechada.");
+  }
 
-    return Future.value(resultado);
+  void update(String table, Map<String, String> data, String id) async {
+    MySqlConnection connection = await getConnection();
+    print("Conectado ao banco de dados.");
+
+    String query = "";
+    String values = "";
+
+    data.forEach((key, value) => values += "$key = '$value', ");
+    values = values.substring(0, values.length - 2);
+
+    query = "UPDATE $table SET $values WHERE id = $id";
+    print(query);
+
+    connection.query(query);
+    connection.close();
+    print("Conexão com o banco de dados fechada.");
   }
 }

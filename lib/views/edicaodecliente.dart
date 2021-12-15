@@ -12,12 +12,15 @@ class EdicaoCliente extends StatelessWidget {
         title: Text("Sua conta"),
         backgroundColor: BUTTONCOLOR,
       ),
-      body: Container(
-        color: BACKGROUNDCOLOR,
-        child: Row(
+      backgroundColor: BACKGROUNDCOLOR,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  alignment: Alignment.center,
                   padding: EdgeInsets.all(15),
                   primary: BUTTONCOLOR,
                 ),
