@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vida_saudavel/views/edicaodecliente.dart';
-import 'package:vida_saudavel/views/favoritascliente.dart';
-import 'package:vida_saudavel/views/home.dart';
+import 'package:vida_saudavel/views/receitascliente.dart';
+
+import 'home.dart';
 
 class Principal extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _PrincipalState extends State<Principal> {
 
   List<Widget> _screens = [
     Home(),
-    FavoritasCliente(),
+    ReceitasCliente(),
     EdicaoCliente(),
   ];
 
@@ -40,26 +41,19 @@ class _PrincipalState extends State<Principal> {
         physics: NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        backgroundColor: BUTTONCOLOR,
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            backgroundColor: BUTTONCOLOR,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: 'Favoritas',
-            backgroundColor: Color.fromRGBO(0, 184, 212, 1.0),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.blender),
             label: 'Suas receitas',
-            backgroundColor: Color.fromRGBO(242, 165, 65, 1.0),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.manage_accounts_rounded),
             label: 'Conta',
-            backgroundColor: Color.fromRGBO(38, 166, 154, 1.0),
           ),
         ],
         currentIndex: _selectedIndex,

@@ -49,6 +49,7 @@ class _LoginState extends State<Login> {
                 decoration: InputDecoration(
                     labelText: "Login",
                     labelStyle: TextStyle(
+                      height: 0.1,
                       color: Colors.white,
                       fontWeight: FontWeight.w400,
                       fontSize: 20,
@@ -83,6 +84,7 @@ class _LoginState extends State<Login> {
                         }),
                     labelText: "Senha",
                     labelStyle: TextStyle(
+                      height: 0.1,
                       color: Colors.white,
                       fontWeight: FontWeight.w400,
                       fontSize: 20,

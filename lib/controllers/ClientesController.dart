@@ -1,17 +1,10 @@
 import 'package:mysql1/mysql1.dart';
-
 import '../database/mysql.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ClientesController {
-  int _authuser = 0;
-
-  int getAuthUser() {
-    return this._authuser;
-  }
-
-  Future<bool> cadastrarCliente(nome, idade, login, senha) async {
+  void cadastrarCliente(nome, idade, login, senha) async {
     Mysql db = new Mysql();
-    bool validado = false;
     Map<String, String> data = new Map();
 
     data["nome"] = nome;
@@ -19,13 +12,7 @@ class ClientesController {
     data["login"] = login;
     data["senha"] = senha;
 
-    var resultado = await db.insert("cliente", data);
-
-    if (resultado.isNotEmpty) {
-      validado = true;
-    }
-
-    return Future.value(validado);
+    db.insert("cliente", data);
   }
 
   Future<bool> verificaLogin(login, senha) async {
@@ -36,11 +23,12 @@ class ClientesController {
     print("Conectado ao banco de dados.");
 
     var resultado = await connection.query(
-        "SELECT id, login, senha FROM cliente WHERE BINARY login = ? AND BINARY senha = ?",
+        "SELECT id FROM cliente WHERE BINARY login = ? AND BINARY senha = ?",
         [login, senha]);
 
     if (resultado.isNotEmpty) {
-      _authuser = resultado.first.elementAt(0);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('id_cliente', resultado.first.elementAt(0).toString());
       retorno = true;
     }
     connection.close();

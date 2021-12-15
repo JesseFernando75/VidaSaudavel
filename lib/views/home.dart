@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vida_saudavel/views/categoriasdereceita.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -26,7 +27,11 @@ class _HomeState extends State<Home> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: new InkWell(
               onTap: () {
-                print("tapped");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => CategoriasdeReceita()),
+                );
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +58,11 @@ class _HomeState extends State<Home> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: new InkWell(
               onTap: () {
-                print("tapped");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => CategoriasdeReceita()),
+                );
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +89,11 @@ class _HomeState extends State<Home> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: new InkWell(
               onTap: () {
-                print("tapped");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => CategoriasdeReceita()),
+                );
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +120,11 @@ class _HomeState extends State<Home> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: new InkWell(
               onTap: () {
-                print("tapped");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => CategoriasdeReceita()),
+                );
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -134,7 +151,11 @@ class _HomeState extends State<Home> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: new InkWell(
               onTap: () {
-                print("tapped");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => CategoriasdeReceita()),
+                );
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -161,7 +182,11 @@ class _HomeState extends State<Home> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: new InkWell(
               onTap: () {
-                print("tapped");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => CategoriasdeReceita()),
+                );
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -188,7 +213,11 @@ class _HomeState extends State<Home> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: new InkWell(
               onTap: () {
-                print("tapped");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => CategoriasdeReceita()),
+                );
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
